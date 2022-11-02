@@ -11,7 +11,6 @@ class lua_pawn : public lua_obj {
 public:
 	static size_t weapon_list_delta;
 	WeaponList getWeaponList();
-	size_t getWeaponCount();
 
 	lua_pawn(lua_State* L, int index);
 	~lua_pawn();

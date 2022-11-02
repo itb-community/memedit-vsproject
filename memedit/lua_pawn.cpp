@@ -43,10 +43,6 @@ WeaponList lua_pawn::getWeaponList() {
 	return static_cast<WeaponList>(addr_weapons);
 }
 
-size_t lua_pawn::getWeaponCount() {
-	return getWeaponList()->size();
-}
-
 template <typename type>
 int lua_pawn::get(lua_State* L) {
 	return lua_pawn(L, 1).get<type>();

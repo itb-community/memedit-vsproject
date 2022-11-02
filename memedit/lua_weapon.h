@@ -13,8 +13,6 @@ public:
 	size_t weaponIndex;
 	Weapon weapon;
 
-	void remove();
-
 	lua_weapon(lua_State* L, int index);
 	~lua_weapon();
 

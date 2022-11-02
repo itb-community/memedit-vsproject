@@ -31,14 +31,6 @@ lua_weapon::lua_weapon(lua_State* L, int index) : lua_obj(L) {
 
 lua_weapon::~lua_weapon() {}
 
-void lua_weapon::remove() {
-	Weapon& weapon = weaponList->back();
-	Weapon& other = weaponList->at(weaponIndex);
-	weapon.swap(other);
-
-	weaponList->pop_back();
-}
-
 bool lua_weapon::isSafe() {
 	return lua_pawn::weapon_list_delta != NULL;
 }
