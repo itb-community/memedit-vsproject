@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "lua_game.h"
+#include "lua_vector.h"
 
 /*
 	Creates an object with the address of the Game
@@ -37,6 +38,8 @@ template int lua_game::get<unsigned char>(lua_State* L);
 template int lua_game::get<double>(lua_State* L);
 template int lua_game::get<const char*>(lua_State* L);
 template int lua_game::get<bool>(lua_State* L);
+template int lua_game::get<IntList>(lua_State* L);
+template int lua_game::get<SharedVoidPtrList>(lua_State* L);
 
 template int lua_game::set<int>(lua_State* L);
 template int lua_game::set<unsigned int>(lua_State* L);
@@ -44,3 +47,5 @@ template int lua_game::set<unsigned char>(lua_State* L);
 template int lua_game::set<double>(lua_State* L);
 template int lua_game::set<const char*>(lua_State* L);
 template int lua_game::set<bool>(lua_State* L);
+template int lua_game::set<IntList>(lua_State* L);
+template int lua_game::set<SharedVoidPtrList>(lua_State* L);

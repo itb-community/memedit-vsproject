@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "lua_pawn.h"
 #include "log.h"
+#include "lua_vector.h"
 
 size_t lua_pawn::weapon_list_delta = NULL;
 
@@ -61,6 +62,8 @@ template int lua_pawn::get<unsigned char>(lua_State* L);
 template int lua_pawn::get<double>(lua_State* L);
 template int lua_pawn::get<const char*>(lua_State* L);
 template int lua_pawn::get<bool>(lua_State* L);
+template int lua_pawn::get<IntList>(lua_State* L);
+template int lua_pawn::get<SharedVoidPtrList>(lua_State* L);
 
 template int lua_pawn::set<int>(lua_State* L);
 template int lua_pawn::set<unsigned int>(lua_State* L);
@@ -68,3 +71,5 @@ template int lua_pawn::set<unsigned char>(lua_State* L);
 template int lua_pawn::set<double>(lua_State* L);
 template int lua_pawn::set<const char*>(lua_State* L);
 template int lua_pawn::set<bool>(lua_State* L);
+template int lua_pawn::set<IntList>(lua_State* L);
+template int lua_pawn::set<SharedVoidPtrList>(lua_State* L);

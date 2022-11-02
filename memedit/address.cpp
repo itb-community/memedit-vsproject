@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "address.h"
 #include "lua_helpers.h"
+#include "lua_vector.h"
 #include "lua_board.h"
 #include "lua_tile.h"
 #include "lua_pawn.h"
@@ -44,6 +45,10 @@ Address Address::build(std::string id, size_t delta, Access access, Addr_Type ad
 			return Address::build<obj, double>(id, delta, access);
 		case TYPE_CONST_CHAR_PTR:
 			return Address::build<obj, const char*>(id, delta, access);
+		case TYPE_LIST_INT:
+			return Address::build<obj, IntList>(id, delta, access);
+		case TYPE_LIST_SHARED_VOID_PTR:
+			return Address::build<obj, SharedVoidPtrList>(id, delta, access);
 		default:
 			return Address{};
 	}

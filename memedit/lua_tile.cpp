@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "lua_tile.h"
 #include "lua_board.h"
+#include "lua_vector.h"
 
 size_t lua_tile::rows_delta = NULL;
 size_t lua_tile::rows_step = NULL;
@@ -63,6 +64,8 @@ template int lua_tile::get<unsigned char>(lua_State* L);
 template int lua_tile::get<double>(lua_State* L);
 template int lua_tile::get<const char*>(lua_State* L);
 template int lua_tile::get<bool>(lua_State* L);
+template int lua_tile::get<IntList>(lua_State* L);
+template int lua_tile::get<SharedVoidPtrList>(lua_State* L);
 
 template int lua_tile::set<int>(lua_State* L);
 template int lua_tile::set<unsigned int>(lua_State* L);
@@ -70,3 +73,5 @@ template int lua_tile::set<unsigned char>(lua_State* L);
 template int lua_tile::set<double>(lua_State* L);
 template int lua_tile::set<const char*>(lua_State* L);
 template int lua_tile::set<bool>(lua_State* L);
+template int lua_tile::set<IntList>(lua_State* L);
+template int lua_tile::set<SharedVoidPtrList>(lua_State* L);

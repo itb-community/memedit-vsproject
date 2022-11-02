@@ -2,6 +2,7 @@
 #include "lua_weapon.h"
 #include "lua_pawn.h"
 #include "log.h"
+#include "lua_vector.h"
 
 /*
 	Creates an object based on the weapon beloning
@@ -57,6 +58,8 @@ template int lua_weapon::get<unsigned char>(lua_State* L);
 template int lua_weapon::get<double>(lua_State* L);
 template int lua_weapon::get<const char*>(lua_State* L);
 template int lua_weapon::get<bool>(lua_State* L);
+template int lua_weapon::get<IntList>(lua_State* L);
+template int lua_weapon::get<SharedVoidPtrList>(lua_State* L);
 
 template int lua_weapon::set<int>(lua_State* L);
 template int lua_weapon::set<unsigned int>(lua_State* L);
@@ -64,3 +67,5 @@ template int lua_weapon::set<unsigned char>(lua_State* L);
 template int lua_weapon::set<double>(lua_State* L);
 template int lua_weapon::set<const char*>(lua_State* L);
 template int lua_weapon::set<bool>(lua_State* L);
+template int lua_weapon::set<IntList>(lua_State* L);
+template int lua_weapon::set<SharedVoidPtrList>(lua_State* L);

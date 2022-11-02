@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "lua_board.h"
 #include "lua_tile.h"
+#include "lua_vector.h"
 
 /*
 	Creates an object with the address of the Board
@@ -38,6 +39,8 @@ template int lua_board::get<unsigned char>(lua_State* L);
 template int lua_board::get<double>(lua_State* L);
 template int lua_board::get<const char*>(lua_State* L);
 template int lua_board::get<bool>(lua_State* L);
+template int lua_board::get<IntList>(lua_State* L);
+template int lua_board::get<SharedVoidPtrList>(lua_State* L);
 
 template int lua_board::set<int>(lua_State* L);
 template int lua_board::set<unsigned int>(lua_State* L);
@@ -45,3 +48,5 @@ template int lua_board::set<unsigned char>(lua_State* L);
 template int lua_board::set<double>(lua_State* L);
 template int lua_board::set<const char*>(lua_State* L);
 template int lua_board::set<bool>(lua_State* L);
+template int lua_board::set<IntList>(lua_State* L);
+template int lua_board::set<SharedVoidPtrList>(lua_State* L);

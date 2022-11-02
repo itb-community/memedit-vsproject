@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "lua_obj.h"
 #include "lua_helpers.h"
+#include "lua_vector.h"
 
 lua_obj::lua_obj(lua_State* L) {
 	this->L = L;
@@ -127,6 +128,28 @@ template int lua_obj::get<unsigned char>();
 template int lua_obj::get<double>();
 template int lua_obj::get<const char*>();
 template int lua_obj::get<bool>();
+template <>
+int lua_obj::get<IntList>() {
+	lua_pop(L, lua_gettop(L));
+	size_t delta = lua_tointeger(L, lua_upvalueindex(1));
+	auto udata = (lua_vector<IntList>*)lua_newuserdata(L, sizeof(lua_vector<IntList>));
+	udata->list = static_cast<IntList>((void*)(addr + delta));
+	luaL_getmetatable(L, "IntList");
+	lua_setmetatable(L, -2);
+
+	return 1;
+}
+template <>
+int lua_obj::get<SharedVoidPtrList>() {
+	lua_pop(L, lua_gettop(L));
+	size_t delta = lua_tointeger(L, lua_upvalueindex(1));
+	auto udata = (lua_vector<SharedVoidPtrList>*)lua_newuserdata(L, sizeof(lua_vector<SharedVoidPtrList>));
+	udata->list = static_cast<SharedVoidPtrList>((void*)(addr + delta));
+	luaL_getmetatable(L, "SharedVoidPtrList");
+	lua_setmetatable(L, -2);
+
+	return 1;
+}
 
 template int lua_obj::set<int>(int);
 template int lua_obj::set<unsigned int>(int);
@@ -134,3 +157,13 @@ template int lua_obj::set<unsigned char>(int);
 template int lua_obj::set<double>(int);
 template int lua_obj::set<const char*>(int);
 template int lua_obj::set<bool>(int);
+template <>
+int lua_obj::set<IntList>(int) {
+	luaL_error(L, "Illegal operation");
+	return 0;
+}
+template <>
+int lua_obj::set<SharedVoidPtrList>(int) {
+	luaL_error(L, "Illegal operation");
+	return 0;
+}
