@@ -4,14 +4,14 @@
 #include "lua.hpp"
 #include "lua_function.h"
 
-enum Access { R, W, RW };
 enum Obj_Type { OBJ_TYPE_BOARD, OBJ_TYPE_TILE, OBJ_TYPE_PAWN, OBJ_TYPE_GAME, OBJ_TYPE_WEAPON };
 enum Addr_Type { TYPE_INT, TYPE_UNSIGNED_INT, TYPE_UNSIGNED_CHAR, TYPE_BOOL, TYPE_DOUBLE, TYPE_CONST_CHAR_PTR };
+enum Access { R, W, RW, NONE };
 
 struct Address {
-	std::string id = "";
+	std::string id = "UNKNOWN";
 	size_t delta = 0x0;
-	Access access = RW;
+	Access access = NONE;
 	LuaFunction get;
 	LuaFunction set;
 
