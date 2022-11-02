@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "lua_pawn.h"
-#include "log.h"
 #include "lua_vector.h"
 
 size_t lua_pawn::weapon_list_delta = NULL;
