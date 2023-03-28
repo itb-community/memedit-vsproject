@@ -30,7 +30,11 @@ lua_tile::lua_tile(lua_State* L, int index) {
 	this->y = luaL_checkinteger(L, index + 1);
 	// userdata can remain as the board userdata
 
-	if (x < 0 || x > 7 || y < 0 || y > 7)
+	lua_getglobal(L, "Board");
+	lua_getfield(L, -1, "x"); int boardX = lua_tointeger(L, -1); lua_pop(L, 1);
+	lua_getfield(L, -1, "y"); int boardY = lua_tointeger(L, -1); lua_pop(L, 2);
+
+	if (x < 0 || x > boardX - 1 || y < 0 || y > boardY - 1)
 		luaL_error(L, "invalid point");
 	else {
 		size_t tiles_row = *(size_t*)(board.getAddr() + lua_tile::rows_delta);
