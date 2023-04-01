@@ -11,6 +11,7 @@
 #include "lua_tile.h"
 #include "lua_weapon.h"
 #include "lua_game.h"
+#include "lua_space_damage.h"
 
 #define DLLEXPORT __declspec(dllexport)
 
@@ -48,6 +49,7 @@ extern "C" DLLEXPORT int luaopen_memedit(lua_State* L) {
 	TILE_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_TILE, "tile");
 	PAWN_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_PAWN, "pawn");
 	WEAPON_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_WEAPON, "weapon");
+	SPACE_DAMAGE_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_SPACE_DAMAGE, "spaceDamage");
 
 
 	// Set base offsets
@@ -55,6 +57,7 @@ extern "C" DLLEXPORT int luaopen_memedit(lua_State* L) {
 	Options::setBaseOffset(lua_tile::rows_delta, "delta_rows");
 	Options::setBaseOffset(lua_tile::rows_step, "step_rows");
 	Options::setBaseOffset(lua_tile::tile_size, "size_tile");
+	Options::setBaseOffset(lua_space_damage::space_damage_size, "size_space_damage");
 
 
 	// Linebreak
@@ -141,6 +144,19 @@ extern "C" DLLEXPORT int luaopen_memedit(lua_State* L) {
 
 	else if (VERBOSE)
 		log(L, "Skip Game functions - missing base offsets!");
+
+	lua_rawset(L, -3);
+
+
+	/* ---------------- Add SpaceDamage functions ------------------ */
+	lua_pushstring(L, "spaceDamage");
+	lua_newtable(L);
+
+	if ( lua_space_damage::isSafe() )
+		Address::addLuaFunctions(L, SPACE_DAMAGE_ADDRESSES);
+
+	else if ( VERBOSE )
+		log(L, "Skip SpaceDamage functions - missing base offsets!");
 
 	lua_rawset(L, -3);
 	/* ----------------------------------------------------- */

@@ -7,6 +7,7 @@
 #include "lua_pawn.h"
 #include "lua_weapon.h"
 #include "lua_game.h"
+#include "lua_space_damage.h"
 
 template <typename type>
 std::string getter() {
@@ -73,6 +74,8 @@ Address Address::build(std::string id, size_t delta, Access access, Addr_Type ad
 			return Address::build<lua_weapon>(id, delta, access, addr_type);
 		case OBJ_TYPE_GAME:
 			return Address::build<lua_game>(id, delta, access, addr_type);
+		case OBJ_TYPE_SPACE_DAMAGE:
+			return Address::build<lua_space_damage>(id, delta, access, addr_type);
 		default:
 			return Address{};
 	}

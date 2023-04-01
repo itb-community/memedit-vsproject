@@ -14,6 +14,7 @@ extern std::vector<Address> BOARD_ADDRESSES;
 extern std::vector<Address> TILE_ADDRESSES;
 extern std::vector<Address> PAWN_ADDRESSES;
 extern std::vector<Address> WEAPON_ADDRESSES;
+extern std::vector<Address> SPACE_DAMAGE_ADDRESSES;
 
 std::string getAddrFormat();
 
