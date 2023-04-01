@@ -66,6 +66,9 @@
     <ClCompile Include="lua_vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lua_userdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lua_space_damage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lua_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_userdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lua_space_damage.h">

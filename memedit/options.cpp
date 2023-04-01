@@ -12,6 +12,7 @@ std::vector<Address> TILE_ADDRESSES;
 std::vector<Address> PAWN_ADDRESSES;
 std::vector<Address> WEAPON_ADDRESSES;
 std::vector<Address> SPACE_DAMAGE_ADDRESSES;
+std::vector<Address> OTHER_ADDRESSES;
 
 std::string getAddrFormat() {
 	if (HEX)

@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClCompile Include="address.cpp" />
     <ClCompile Include="lua_space_damage.cpp" />
+    <ClCompile Include="lua_userdata.cpp" />
     <ClCompile Include="lua_vector.cpp" />
     <ClCompile Include="memedit.cpp" />
     <ClCompile Include="debug.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="lua_obj.h" />
     <ClInclude Include="lua_pawn.h" />
     <ClInclude Include="lua_space_damage.h" />
+    <ClInclude Include="lua_userdata.h" />
     <ClInclude Include="lua_tile.h" />
     <ClInclude Include="lua_vector.h" />
     <ClInclude Include="lua_weapon.h" />

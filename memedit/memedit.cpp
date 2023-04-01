@@ -5,6 +5,7 @@
 #include "lua.hpp"
 #include "misc.h"
 #include "address.h"
+#include "lua_userdata.h"
 #include "lua_vector.h"
 #include "lua_pawn.h"
 #include "lua_board.h"
@@ -49,6 +50,7 @@ extern "C" DLLEXPORT int luaopen_memedit(lua_State* L) {
 	TILE_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_TILE, "tile");
 	PAWN_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_PAWN, "pawn");
 	WEAPON_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_WEAPON, "weapon");
+	OTHER_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_OTHER, "other");
 	SPACE_DAMAGE_ADDRESSES = Options::getAddrList(L, OBJ_TYPE_SPACE_DAMAGE, "spaceDamage");
 
 
@@ -157,6 +159,19 @@ extern "C" DLLEXPORT int luaopen_memedit(lua_State* L) {
 
 	else if ( VERBOSE )
 		log(L, "Skip SpaceDamage functions - missing base offsets!");
+
+	lua_rawset(L, -3);
+
+
+	/* ---------------- Add Other functions ------------------ */
+	lua_pushstring(L, "other");
+	lua_newtable(L);
+
+	if ( lua_userdata::isSafe() )
+		Address::addLuaFunctions(L, OTHER_ADDRESSES);
+
+	else if ( VERBOSE )
+		log(L, "Skip Other functions - missing base offsets!");
 
 	lua_rawset(L, -3);
 	/* ----------------------------------------------------- */

@@ -11,6 +11,7 @@ enum Obj_Type {
 	OBJ_TYPE_PAWN,
 	OBJ_TYPE_GAME,
 	OBJ_TYPE_WEAPON,
+	OBJ_TYPE_OTHER,
 	OBJ_TYPE_SPACE_DAMAGE,
 };
 enum Addr_Type {

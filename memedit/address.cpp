@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "address.h"
 #include "lua_helpers.h"
+#include "lua_userdata.h"
 #include "lua_vector.h"
 #include "lua_board.h"
 #include "lua_tile.h"
@@ -76,6 +77,8 @@ Address Address::build(std::string id, size_t delta, Access access, Addr_Type ad
 			return Address::build<lua_game>(id, delta, access, addr_type);
 		case OBJ_TYPE_SPACE_DAMAGE:
 			return Address::build<lua_space_damage>(id, delta, access, addr_type);
+		case OBJ_TYPE_OTHER:
+			return Address::build<lua_userdata>(id, delta, access, addr_type);
 		default:
 			return Address{};
 	}
