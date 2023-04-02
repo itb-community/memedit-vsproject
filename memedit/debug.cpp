@@ -78,6 +78,13 @@ int get_addr_int(lua_State* L) {
 	return 1;
 }
 
+int get_addr_float(lua_State* L)
+{
+	void* addr = (void*)luaL_checkinteger(L, 1);
+	lua_pushnumber(L, *(float*)addr);
+	return 1;
+}
+
 int get_addr_bool(lua_State* L) {
 	void* addr = (void*)luaL_checkinteger(L, 1);
 	lua_pushboolean(L, *(bool*)addr);
@@ -118,6 +125,7 @@ void add_debug_functions(lua_State* L) {
 		log(L, "Add isAddrNotPointer");
 		log(L, "Add getObjAddr");
 		log(L, "Add getAddrInt");
+		log(L, "Add getAddrFloat");
 		log(L, "Add getAddrBool");
 		log(L, "Add getAddrByte");
 		log(L, "Add getAddrString");
@@ -134,6 +142,10 @@ void add_debug_functions(lua_State* L) {
 
 	lua_pushstring(L, "getAddrInt");
 	lua_pushcfunction(L, get_addr_int);
+	lua_rawset(L, -3);
+
+	lua_pushstring(L, "getAddrFloat");
+	lua_pushcfunction(L, get_addr_float);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "getAddrBool");

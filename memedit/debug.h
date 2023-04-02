@@ -15,6 +15,10 @@
 	  this function is safe as long as we own the address.
 	  .getAddrInt(addr)
 
+	  returns address value as an float.
+	  this function is safe as long as we own the address.
+	  .getAddrFloat(addr)
+
 	  returns address value as a boolean.
 	  this function is safe as long as we own the address.
 	  .getAddrBool(addr)
