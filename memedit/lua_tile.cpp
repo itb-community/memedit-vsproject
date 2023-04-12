@@ -31,6 +31,9 @@ lua_tile::lua_tile(lua_State* L, int index) {
 	// userdata can remain as the board userdata
 
 	lua_getglobal(L, "Board");
+	lua_getfield(L, -1, "GetSize");
+	lua_insert(L, -2);
+	lua_call(L, 1, 1);
 	lua_getfield(L, -1, "x"); int boardX = lua_tointeger(L, -1); lua_pop(L, 1);
 	lua_getfield(L, -1, "y"); int boardY = lua_tointeger(L, -1); lua_pop(L, 2);
 
